@@ -455,11 +455,14 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSW(S9, 8*WORDSIZE, SP);
     emitSW(S10, 9*WORDSIZE, SP);
     emitSW(S11, 10*WORDSIZE, SP);
+
     emitSW(FP, 11*WORDSIZE, SP);
 
     emitADDI(FP, FP, -12*(WORDSIZE));
 
-    dispatch(func_body, startLabel, endLabel);
+    for (int i = 0; i < func_body->size; i++) {
+      dispatch(func_body->children[i], startLabel, endLabel);
+    }
 
 
     // produce a label for return statements to come back to
