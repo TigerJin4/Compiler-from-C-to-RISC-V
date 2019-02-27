@@ -418,18 +418,24 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Generate code for function body
       - Set up stack and frame
     */
-    emitADDI(SP, SP, -44);
+
+    emitADDI(SP, SP, -12*(WORDSIZE));
     emitSW(S1, 0, SP);
-    emitSW(S2, 4, SP);
-    emitSW(S3, 8, SP);
-    emitSW(S4, 12, SP);
-    emitSW(S5, 16, SP);
-    emitSW(S6, 20, SP);
-    emitSW(S7, 24, SP);
-    emitSW(S8, 28, SP);
-    emitSW(S9, 32, SP);
-    emitSW(S10, 36, SP);
-    emitSW(S11, 40, SP);
+    emitSW(S2, 4*WORDSIZE, SP);
+    emitSW(S3, 8*WORDSIZE, SP);
+    emitSW(S4, 12*WORDSIZE, SP);
+    emitSW(S5, 16*WORDSIZE, SP);
+    emitSW(S6, 20*WORDSIZE, SP);
+    emitSW(S7, 24*WORDSIZE, SP);
+    emitSW(S8, 28*WORDSIZE, SP);
+    emitSW(S9, 32*WORDSIZE, SP);
+    emitSW(S10, 36*WORDSIZE, SP);
+    emitSW(S11, 40*WORDSIZE, SP);
+    emitSW(FP, 44*WORDSIZE, SP);
+
+    emitADDI(FP, FP, -12*(WORDSIZE));
+
+    dispatch(func_body, startLabel, endLabel);
 
 
     // produce a label for return statements to come back to
@@ -442,18 +448,24 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
-    emitLW(S1, 0, SP);
-    emitLW(S2, 4, SP);
-    emitLW(S3, 8, SP);
-    emitLW(S4, 12, SP);
-    emitLW(S5, 16, SP);
-    emitLW(S6, 20, SP);
-    emitLW(S7, 24, SP);
-    emitLW(S8, 28, SP);
-    emitLW(S9, 32, SP);
-    emitLW(S10, 36, SP);
-    emitLW(S11, 40, SP);
-    emitADDI(SP, SP, 44);
+    emitADDI(FP, FP, 12*(WORDSIZE));
+    emitLW(S1, 0*WORDSIZE, SP);
+    emitLW(S2, 4*WORDSIZE, SP);
+    emitLW(S3, 8*WORDSIZE, SP);
+    emitLW(S4, 12*WORDSIZE, SP);
+    emitLW(S5, 16*WORDSIZE, SP);
+    emitLW(S6, 20*WORDSIZE, SP);
+    emitLW(S7, 24*WORDSIZE, SP);
+    emitLW(S8, 28*WORDSIZE, SP);
+    emitLW(S9, 32*WORDSIZE, SP);
+    emitLW(S10, 36*WORDSIZE, SP);
+    emitLW(S11, 40*WORDSIZE, SP);
+    emitLW(FP, 44*WORDSIZE, SP);
+
+
+    emitADDI(SP, SP, 12*WORDSIZE);
+
+
 
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
