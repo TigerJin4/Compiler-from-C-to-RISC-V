@@ -460,11 +460,11 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
     emitADDI(FP, FP, -12*(WORDSIZE));
 
-    emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
-    for (int i = 0; i < func_body->size; i++) {
-      dispatch(func_body->children[i], startLabel, endLabel);
-      emitSW(S1, (i+11)*WORDSIZE, SP);
-    }
+//    emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
+//    for (int i = 0; i < func_body->size; i++) {
+//      dispatch(func_body->children[i], startLabel, endLabel);
+//      emitSW(S1, (i+11)*WORDSIZE, SP);
+//    }
 
     dispatch(func_body, startLabel, endLabel);
 
@@ -525,7 +525,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     }
     dispatch(func_id,startLabel,endLabel); // calling the function
 
-    
+
     emitADDI(SP, SP, 1*(int)(arg_list->size)); // remove argument and restore the sp
   }
   /* YOUR CODE HERE */

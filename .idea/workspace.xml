@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cgen.c" beforeDir="false" afterPath="$PROJECT_DIR$/cgen.c" afterDir="false" />
-    </list>
+    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cgen.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="527" column="46" lean-forward="true" selection-start-line="527" selection-start-column="46" selection-end-line="527" selection-end-column="46" />
+            <state relative-caret-position="191">
+              <caret line="523" column="16" lean-forward="true" selection-start-line="523" selection-start-column="16" selection-end-line="523" selection-end-column="16" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -152,12 +150,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551081895849</updated>
-      <workItem from="1551081899157" duration="18029000" />
+      <workItem from="1551081899157" duration="18313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18029000" />
+    <option name="totallyTimeSpent" value="18313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -226,8 +224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cgen.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="527" column="46" lean-forward="true" selection-start-line="527" selection-start-column="46" selection-end-line="527" selection-end-column="46" />
+        <state relative-caret-position="191">
+          <caret line="523" column="16" lean-forward="true" selection-start-line="523" selection-start-column="16" selection-end-line="523" selection-end-column="16" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
