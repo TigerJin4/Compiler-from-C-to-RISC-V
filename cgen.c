@@ -463,7 +463,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
     for (int i = 0; i < func_body->size; i++) {
       dispatch(func_body->children[i], startLabel, endLabel);
-      emitSW(S1, 0, SP);
+      emitSW(S1, (i+11)*WORDSIZE, SP);
     }
 
     dispatch(func_body, startLabel, endLabel);
@@ -519,10 +519,14 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     DAST *func_id = dast->children[0];
     DAST *arg_list = dast->children[1];
     emitADDI(SP, SP, -1*(int)(arg_list->size));
+    for (int i = 0; i < arg_list->size; i++){ // store the arguments
+      dispatch(arg_list->children[i], startLabel, endLabel);
+      emitSW(S1, ((int)arg_list->size - 1 - i) *WORDSIZE, SP);
+    }
+    dispatch(func_id,startLabel,endLabel); // calling the function
 
-    dispatch(func_id,startLabel,endLabel);
-    S1;
-
+    
+    emitADDI(SP, SP, 1*(int)(arg_list->size)); // remove argument and restore the sp
   }
   /* YOUR CODE HERE */
 }
