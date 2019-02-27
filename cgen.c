@@ -167,7 +167,6 @@ void processExprBinaryEq(DAST* dast,
   emitSLT(T1, S1, T0);
   emitSLT(T2, T0, S1);
   emitOR(S1, T1, T0);
-  emitXORI(S1, S1, 1);
   emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
@@ -185,6 +184,7 @@ void processExprBinaryNotEq(DAST* dast,
   emitSLT(T1, S1, T0);
   emitSLT(T2, T0, S1);
   emitOR(S1, T1, T0);
+  emitXORI(S1, S1, 1);
   emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
