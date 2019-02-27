@@ -460,11 +460,14 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
     emitADDI(FP, FP, -12*(WORDSIZE));
 
+    emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
     for (int i = 0; i < func_body->size; i++) {
-      emitADDI(SP, SP, -i*(WORDSIZE));
       dispatch(func_body->children[i], startLabel, endLabel);
       emitSW(S1, 0, SP);
     }
+
+    dispatch(func_body, startLabel, endLabel);
+
 
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
@@ -509,7 +512,16 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
+  if (dast->size == 2) {
+    // only cgen on functions with bodies
+    DAST *func_id = dast->children[0];
+    DAST *arg_list = dast->children[1];
+    emitADDI(SP, SP, -1*(int)(arg_list->size));
 
+    dispatch(func_id,startLabel,endLabel);
+    S1;
+
+  }
   /* YOUR CODE HERE */
 }
 
