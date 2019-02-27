@@ -518,7 +518,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     // only cgen on functions with bodies
     DAST *func_id = dast->children[0];
     DAST *arg_list = dast->children[1];
-    emitADDI(SP, SP, -1*(int)(arg_list->size));
+    emitADDI(SP, SP, -WORDSIZE*(int)(arg_list->size));
     for (int i = 0; i < arg_list->size; i++){ // store the arguments
       dispatch(arg_list->children[i], startLabel, endLabel);
       emitSW(S1, ((int)arg_list->size - 1 - i) *WORDSIZE, SP);
@@ -526,7 +526,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     dispatch(func_id,startLabel,endLabel); // calling the function
 
 
-    emitADDI(SP, SP, 1*(int)(arg_list->size)); // remove argument and restore the sp
+    emitADDI(SP, SP, WORDSIZE*(int)(arg_list->size)); // remove argument and restore the sp
   }
   /* YOUR CODE HERE */
 }
