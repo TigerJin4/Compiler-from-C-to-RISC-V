@@ -256,12 +256,36 @@ void processExprBinaryLT(DAST* dast,
 void processExprBinaryLogicAnd(DAST* dast,
                                char* startLabel,
                                char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+
+  emitSLTIU(T0, x0, T0);
+  emitSLTIU(S1, x0, S1);
+  emitAND(S1, T0, S1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryLogicOr(DAST* dast,
                               char* startLabel,
                               char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+
+  emitSLTIU(T0, x0, T0);
+  emitSLTIU(S1, x0, S1);
+  emitOR(S1, T0, S1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
