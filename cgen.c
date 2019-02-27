@@ -461,9 +461,10 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitADDI(FP, FP, -12*(WORDSIZE));
 
     for (int i = 0; i < func_body->size; i++) {
+      emitADDI(SP, SP, -i*(WORDSIZE));
       dispatch(func_body->children[i], startLabel, endLabel);
+      emitSW(S1, 0, SP);
     }
-
 
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
@@ -508,6 +509,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
+
   /* YOUR CODE HERE */
 }
 
