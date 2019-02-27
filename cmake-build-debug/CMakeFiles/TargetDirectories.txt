@@ -1,0 +1,3 @@
+/Users/wenhan_jin/Desktop/CS61C/test61c/project-2-TigerJin4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/wenhan_jin/Desktop/CS61C/test61c/project-2-TigerJin4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/wenhan_jin/Desktop/CS61C/test61c/project-2-TigerJin4/cmake-build-debug/CMakeFiles/project_2_TigerJin4.dir

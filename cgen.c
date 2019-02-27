@@ -98,42 +98,111 @@ void processConstStr(DAST* dast, char* startLabel, char* endLabel) {
 void processExprBinaryAdd(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitADD(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinarySub(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSUB(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryMul(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitMUL(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryDiv(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitDIV(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryEq(DAST* dast,
                          char* startLabel,
                          char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(T1, S1, T0);
+  emitSLT(T2, T0, S1);
+  emitOR(S1, T1, T0);
+  emitXORI(S1, S1, 1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryNotEq(DAST* dast,
                             char* startLabel,
                             char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(T1, S1, T0);
+  emitSLT(T2, T0, S1);
+  emitOR(S1, T1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryGTEq(DAST* dast,
                            char* startLabel,
                            char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(S1, S1, T0);
+  emitXORI(S1, S1, 1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
  /* YOUR CODE HERE */
 }
 
@@ -141,17 +210,46 @@ void processExprBinaryGT(DAST* dast,
                          char* startLabel,
                          char* endLabel) {
   /* YOUR CODE HERE */
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(S1, T0, S1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
+
 }
 
 void processExprBinaryLTEq(DAST* dast,
                            char* startLabel,
                            char* endLabel) {
   /* YOUR CODE HERE */
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(S1, T0, S1);
+  emitXORI(S1, S1, 1);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
 }
 
 void processExprBinaryLT(DAST* dast,
                          char* startLabel,
                          char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitSLT(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
@@ -170,18 +268,45 @@ void processExprBinaryLogicOr(DAST* dast,
 void processExprBinaryBitAnd(DAST* dast,
                              char* startLabel,
                              char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitAND(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryBitOr(DAST* dast,
                             char* startLabel,
                             char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitOR(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
 void processExprBinaryBitXor(DAST* dast,
                              char* startLabel,
                              char* endLabel) {
+  dispatch(dast->children[0], startLabel, endLabel);
+  emitADDI(SP, SP, -4);
+  emitSW (S1, 0, SP);
+  dispatch(dast->children[1], startLabel, endLabel);
+  emitADD(T0, S1, x0);
+  emitLW(S1, 0, SP);
+  emitXOR(S1, S1, T0);
+  emitADD(x0, 0, SP);
+  emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
 
@@ -293,6 +418,19 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Generate code for function body
       - Set up stack and frame
     */
+    emitADDI(SP, SP, -44);
+    emitSW(S1, 0, SP);
+    emitSW(S2, 4, SP);
+    emitSW(S3, 8, SP);
+    emitSW(S4, 12, SP);
+    emitSW(S5, 16, SP);
+    emitSW(S6, 20, SP);
+    emitSW(S7, 24, SP);
+    emitSW(S8, 28, SP);
+    emitSW(S9, 32, SP);
+    emitSW(S10, 36, SP);
+    emitSW(S11, 40, SP);
+
 
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
@@ -304,6 +442,18 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
+    emitLW(S1, 0, SP);
+    emitLW(S2, 4, SP);
+    emitLW(S3, 8, SP);
+    emitLW(S4, 12, SP);
+    emitLW(S5, 16, SP);
+    emitLW(S6, 20, SP);
+    emitLW(S7, 24, SP);
+    emitLW(S8, 28, SP);
+    emitLW(S9, 32, SP);
+    emitLW(S10, 36, SP);
+    emitLW(S11, 40, SP);
+    emitADDI(SP, SP, 44);
 
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
