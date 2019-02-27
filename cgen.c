@@ -479,6 +479,8 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
+    emitADDI(SP, SP, 1* (int)func_body->size * WORDSIZE);
+
     emitADDI(FP, FP, 12*(WORDSIZE));
     emitLW(S1, 0*WORDSIZE, SP);
     emitLW(S2, 1*WORDSIZE, SP);
