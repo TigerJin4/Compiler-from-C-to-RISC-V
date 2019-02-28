@@ -441,20 +441,19 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     */
 
     emitADDI(SP, SP, -13*(WORDSIZE));
-    emitSW(S1, 0, SP);
-    emitSW(S2, 1*WORDSIZE, SP);
-    emitSW(S3, 2*WORDSIZE, SP);
-    emitSW(S4, 3*WORDSIZE, SP);
-    emitSW(S5, 4*WORDSIZE, SP);
-    emitSW(S6, 5*WORDSIZE, SP);
-    emitSW(S7, 6*WORDSIZE, SP);
-    emitSW(S8, 7*WORDSIZE, SP);
-    emitSW(S9, 8*WORDSIZE, SP);
-    emitSW(S10, 9*WORDSIZE, SP);
-    emitSW(S11, 10*WORDSIZE, SP);
-    emitSW(RA, 11*WORDSIZE, SP);
-
-    emitSW(FP, 12*WORDSIZE, SP);
+    emitSW(FP, 0*WORDSIZE, SP);
+    emitSW(S1, 1*WORDSIZE, SP);
+    emitSW(S2, 2*WORDSIZE, SP);
+    emitSW(S3, 3*WORDSIZE, SP);
+    emitSW(S4, 4*WORDSIZE, SP);
+    emitSW(S5, 5*WORDSIZE, SP);
+    emitSW(S6, 6*WORDSIZE, SP);
+    emitSW(S7, 7*WORDSIZE, SP);
+    emitSW(S8, 8*WORDSIZE, SP);
+    emitSW(S9, 9*WORDSIZE, SP);
+    emitSW(S10, 10*WORDSIZE, SP);
+    emitSW(S11, 11*WORDSIZE, SP);
+    emitSW(RA, 12*WORDSIZE, SP);
 
     emitADDI(FP, FP, -13*(WORDSIZE));
 
@@ -474,19 +473,20 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitADDI(SP, SP, 1* (int)func_body->size * WORDSIZE);
 
     emitADDI(FP, FP, 13*(WORDSIZE));
-    emitLW(S1, 0*WORDSIZE, SP);
-    emitLW(S2, 1*WORDSIZE, SP);
-    emitLW(S3, 2*WORDSIZE, SP);
-    emitLW(S4, 3*WORDSIZE, SP);
-    emitLW(S5, 4*WORDSIZE, SP);
-    emitLW(S6, 5*WORDSIZE, SP);
-    emitLW(S7, 6*WORDSIZE, SP);
-    emitLW(S8, 7*WORDSIZE, SP);
-    emitLW(S9, 8*WORDSIZE, SP);
-    emitLW(S10, 9*WORDSIZE, SP);
-    emitLW(S11, 10*WORDSIZE, SP);
-    emitLW(RA, 11*WORDSIZE, SP);
-    emitLW(FP, 12*WORDSIZE, SP);
+    emitLW(FP, 0*WORDSIZE, SP);
+    emitLW(S1, 1*WORDSIZE, SP);
+    emitLW(S2, 2*WORDSIZE, SP);
+    emitLW(S3, 3*WORDSIZE, SP);
+    emitLW(S4, 4*WORDSIZE, SP);
+    emitLW(S5, 5*WORDSIZE, SP);
+    emitLW(S6, 6*WORDSIZE, SP);
+    emitLW(S7, 7*WORDSIZE, SP);
+    emitLW(S8, 8*WORDSIZE, SP);
+    emitLW(S9, 9*WORDSIZE, SP);
+    emitLW(S10, 10*WORDSIZE, SP);
+    emitLW(S11, 11*WORDSIZE, SP);
+    emitLW(RA, 12*WORDSIZE, SP);
+
 
 
     emitADDI(SP, SP, 13*WORDSIZE);
