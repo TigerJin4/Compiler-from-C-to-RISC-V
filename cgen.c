@@ -442,6 +442,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
     emitADDI(SP, SP, -13*(WORDSIZE));
     emitSW(FP, 0*WORDSIZE, SP);
+    emitMV(FP, SP);
     emitSW(S1, 1*WORDSIZE, SP);
     emitSW(S2, 2*WORDSIZE, SP);
     emitSW(S3, 3*WORDSIZE, SP);
@@ -455,7 +456,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSW(S11, 11*WORDSIZE, SP);
     emitSW(RA, 12*WORDSIZE, SP);
 
-    emitADDI(FP, FP, -13*(WORDSIZE));
+    //emitADDI(FP, FP, -13*(WORDSIZE));
 
     dispatch(func_body, startLabel, endLabel);
 
@@ -486,8 +487,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW(S10, 10*WORDSIZE, SP);
     emitLW(S11, 11*WORDSIZE, SP);
     emitLW(RA, 12*WORDSIZE, SP);
-
-
 
     emitADDI(SP, SP, 13*WORDSIZE);
 
