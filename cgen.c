@@ -525,7 +525,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
       dispatch(arg_list->children[i], startLabel, endLabel);
       emitSW(S1, ((int)arg_list->size - 1 - i) * WORDSIZE, SP);
     }
-    emitJR(RA); // calling the function
+    emitJAL(RA, func_id->data.identifier); // calling the function
 
     emitADDI(SP, SP, WORDSIZE*(int)(arg_list->size)); // remove argument and restore the sp
   }
