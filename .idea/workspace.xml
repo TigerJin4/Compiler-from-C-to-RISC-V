@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="" />
+    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/cgen.c" beforeDir="false" afterPath="$PROJECT_DIR$/cgen.c" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cgen.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="257" column="22" lean-forward="true" selection-start-line="257" selection-start-column="22" selection-end-line="257" selection-end-column="22" />
+            <state relative-caret-position="385">
+              <caret line="520" column="35" selection-start-line="520" selection-start-column="35" selection-end-line="520" selection-end-column="35" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -192,19 +194,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551081895849</updated>
-      <workItem from="1551081899157" duration="24150000" />
+      <workItem from="1551081899157" duration="25422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24150000" />
+    <option name="totallyTimeSpent" value="25422000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14091559" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.047925606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
@@ -287,8 +289,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cgen.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="257" column="22" lean-forward="true" selection-start-line="257" selection-start-column="22" selection-end-line="257" selection-end-column="22" />
+        <state relative-caret-position="385">
+          <caret line="520" column="35" selection-start-line="520" selection-start-column="35" selection-end-line="520" selection-end-column="35" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
