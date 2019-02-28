@@ -536,6 +536,37 @@ void processBlock(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processIfElse(DAST* dast, char* startLabel, char* endLabel) {
+  char* else_label = generateLocalLabel();
+  char* exit_label = generateLocalLabel();
+
+  DAST *condition = dast->children[0];
+  DAST *if_block = dast->children[1];
+
+  // Initialize condition
+  dispatch(condition, startLabel, exit_label);
+
+  if (dast->size == 2) {
+
+    // if false, jump to end
+    emitBEQZ(S1, exit_label);
+    // if true, dispatch if block
+    dispatch(if_block, startLabel, exit_label);
+  }
+  else {
+    DAST *else_block = dast->children[2];
+    // if false, jump to else block
+    emitBEQZ(S1, else_label);
+    // if true, dispatch if block
+    dispatch(if_block, startLabel, exit_label);
+    // jump to the end
+    emitJ(exit_label);
+    // Label for else block
+    emitLABEL(else_label);
+    // dispatch else block
+    dispatch(else_block, startLabel, exit_label);
+  }
+  // Label for the end of the clause
+  emitLABEL(exit_label);
   /* YOUR CODE HERE */
 }
 
