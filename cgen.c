@@ -465,25 +465,48 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
+
     emitSUB(T0, SP, FP);
     emitSUB(SP, SP, T0);
 
     //emitADDI(FP, FP, 13*(WORDSIZE));
-    emitLW(FP, 0*WORDSIZE, SP);
-    emitLW(S1, 1*WORDSIZE, SP);
-    emitLW(S2, 2*WORDSIZE, SP);
-    emitLW(S3, 3*WORDSIZE, SP);
-    emitLW(S4, 4*WORDSIZE, SP);
-    emitLW(S5, 5*WORDSIZE, SP);
-    emitLW(S6, 6*WORDSIZE, SP);
-    emitLW(S7, 7*WORDSIZE, SP);
-    emitLW(S8, 8*WORDSIZE, SP);
-    emitLW(S9, 9*WORDSIZE, SP);
-    emitLW(S10, 10*WORDSIZE, SP);
-    emitLW(S11, 11*WORDSIZE, SP);
-    emitLW(RA, 12*WORDSIZE, SP);
+//    emitLW(FP, 0*WORDSIZE, SP);
+//    emitLW(S1, 1*WORDSIZE, SP);
+//    emitLW(S2, 2*WORDSIZE, SP);
+//    emitLW(S3, 3*WORDSIZE, SP);
+//    emitLW(S4, 4*WORDSIZE, SP);
+//    emitLW(S5, 5*WORDSIZE, SP);
+//    emitLW(S6, 6*WORDSIZE, SP);
+//    emitLW(S7, 7*WORDSIZE, SP);
+//    emitLW(S8, 8*WORDSIZE, SP);
+//    emitLW(S9, 9*WORDSIZE, SP);
+//    emitLW(S10, 10*WORDSIZE, SP);
+//    emitLW(S11, 11*WORDSIZE, SP);
+//    emitLW(RA, 12*WORDSIZE, SP);
+//    emitADDI(SP, SP, 13*WORDSIZE);
 
-    emitADDI(SP, SP, 13*WORDSIZE);
+
+    emitLW(S1, -12*WORDSIZE, FP);
+    emitLW(S2, -11*WORDSIZE, FP);
+    emitLW(S3, -10*WORDSIZE, FP);
+    emitLW(S4, -9*WORDSIZE, FP);
+    emitLW(S5, -8*WORDSIZE, FP);
+    emitLW(S6, -7*WORDSIZE, FP);
+    emitLW(S7, -6*WORDSIZE, FP);
+    emitLW(S8, -5*WORDSIZE, FP);
+    emitLW(S9, -4*WORDSIZE, FP);
+    emitLW(S10, -3*WORDSIZE, FP);
+    emitLW(S11, -2*WORDSIZE, FP);
+    emitLW(RA, -1*WORDSIZE, FP);
+
+    emitMV(SP, FP);
+
+    emitLW(FP, 0, SP);
+
+    emitADDI(SP, SP, WORDSIZE);
+
+
+
 
 
 
