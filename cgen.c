@@ -443,7 +443,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Set up stack and frame
     */
 
-    emitADDI(SP, SP, -12*(WORDSIZE));
+    emitADDI(SP, SP, -13*(WORDSIZE));
     emitSW(S1, 0, SP);
     emitSW(S2, 1*WORDSIZE, SP);
     emitSW(S3, 2*WORDSIZE, SP);
@@ -455,10 +455,11 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSW(S9, 8*WORDSIZE, SP);
     emitSW(S10, 9*WORDSIZE, SP);
     emitSW(S11, 10*WORDSIZE, SP);
+    emitSW(RA, 11*WORDSIZE, SP);
 
-    emitSW(FP, 11*WORDSIZE, SP);
+    emitSW(FP, 12*WORDSIZE, SP);
 
-    emitADDI(FP, FP, -12*(WORDSIZE));
+    emitADDI(FP, FP, -13*(WORDSIZE));
 
 //    emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
 //    for (int i = 0; i < func_body->size; i++) {
@@ -481,7 +482,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     */
     emitADDI(SP, SP, 1* (int)func_body->size * WORDSIZE);
 
-    emitADDI(FP, FP, 12*(WORDSIZE));
+    emitADDI(FP, FP, 13*(WORDSIZE));
     emitLW(S1, 0*WORDSIZE, SP);
     emitLW(S2, 1*WORDSIZE, SP);
     emitLW(S3, 2*WORDSIZE, SP);
@@ -493,10 +494,11 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW(S9, 8*WORDSIZE, SP);
     emitLW(S10, 9*WORDSIZE, SP);
     emitLW(S11, 10*WORDSIZE, SP);
-    emitLW(FP, 11*WORDSIZE, SP);
+    emitLW(RA, 11*WORDSIZE, SP);
+    emitLW(FP, 12*WORDSIZE, SP);
 
 
-    emitADDI(SP, SP, 12*WORDSIZE);
+    emitADDI(SP, SP, 13*WORDSIZE);
 
 
 
@@ -521,10 +523,9 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     emitADDI(SP, SP, -WORDSIZE*(int)(arg_list->size));
     for (int i = 0; i < arg_list->size; i++){ // store the arguments
       dispatch(arg_list->children[i], startLabel, endLabel);
-      emitSW(S1, ((int)arg_list->size - 1 - i) *WORDSIZE, SP);
+      emitSW(S1, ((int)arg_list->size - 1 - i) * WORDSIZE, SP);
     }
-    dispatch(func_id,startLabel,endLabel); // calling the function
-
+    emitJR(RA); // calling the function
 
     emitADDI(SP, SP, WORDSIZE*(int)(arg_list->size)); // remove argument and restore the sp
   }
