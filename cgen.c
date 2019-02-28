@@ -459,8 +459,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     //emitADDI(FP, FP, -13*(WORDSIZE));
 
     dispatch(func_body, startLabel, endLabel);
-
-
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
     emitLABEL (total_string);
@@ -471,7 +469,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
-    emitADDI(SP, SP, 1* (int)func_body->size * WORDSIZE);
 
     emitADDI(FP, FP, 13*(WORDSIZE));
     emitLW(FP, 0*WORDSIZE, SP);
