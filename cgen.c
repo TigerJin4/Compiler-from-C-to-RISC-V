@@ -105,7 +105,6 @@ void processExprBinaryAdd(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitADD(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -120,7 +119,6 @@ void processExprBinarySub(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitSUB(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -135,7 +133,6 @@ void processExprBinaryMul(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitMUL(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -150,7 +147,6 @@ void processExprBinaryDiv(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitDIV(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -168,7 +164,6 @@ void processExprBinaryEq(DAST* dast,
   emitSLT(T2, T0, S1);
   emitOR(S1, T1, T2);
   emitXORI(S1, S1, 1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -185,8 +180,6 @@ void processExprBinaryNotEq(DAST* dast,
   emitSLT(T1, S1, T0);
   emitSLT(T2, T0, S1);
   emitOR(S1, T1, T2);
-  //emitXORI(S1, S1, 1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -202,7 +195,6 @@ void processExprBinaryGTEq(DAST* dast,
   emitLW(S1, 0, SP);
   emitSLT(S1, S1, T0);
   emitXORI(S1, S1, 1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
  /* YOUR CODE HERE */
 }
@@ -218,7 +210,6 @@ void processExprBinaryGT(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitSLT(S1, T0, S1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
 
 }
@@ -235,7 +226,6 @@ void processExprBinaryLTEq(DAST* dast,
   emitLW(S1, 0, SP);
   emitSLT(S1, T0, S1);
   emitXORI(S1, S1, 1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
 }
 
@@ -249,7 +239,6 @@ void processExprBinaryLT(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitSLT(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -264,12 +253,15 @@ void processExprBinaryLogicAnd(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
 
-  emitSLTIU(T0, 0, T0);
-  emitSLTIU(S1, 0, S1);
+//  emitSLTIU(T0, 0, T0);
+//  emitSLTIU(S1, 0, S1);
+//  emitAND(S1, T0, S1);
 
+  emitMUL(S1, T0, S1);
+  emitSLT(T1, S1, x0);
+  emitSLT(T2, x0, S1);
+  emitMUL(S1, T1, T2);
 
-  emitAND(S1, T0, S1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -284,12 +276,14 @@ void processExprBinaryLogicOr(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
 
-  emitSLTIU(T0, 0, T0);
-  emitSLTIU(S1, 0, S1);
+//  emitSLTIU(T0, 0, T0);
+//  emitSLTIU(S1, 0, S1);
+//  emitOR(S1, T0, S1);
+  emitADD(S1, T0, S1);
+  emitSLT(T1, S1, x0);
+  emitSLT(T2, x0, S1);
+  emitADD(S1, T1, T2);
 
-
-  emitOR(S1, T0, S1);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -304,7 +298,6 @@ void processExprBinaryBitAnd(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitAND(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -319,7 +312,6 @@ void processExprBinaryBitOr(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
   emitOR(S1, S1, T0);
-  //emitADD(x0, 0, SP);
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
