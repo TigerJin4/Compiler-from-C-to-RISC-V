@@ -506,7 +506,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
-  if (dast->size == 2) {
     // only cgen on functions with bodies
     DAST *func_id = dast->children[0];
     DAST *arg_list = dast->children[1];
@@ -518,7 +517,6 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     emitJAL(RA, func_id->data.identifier); // calling the function
     emitMV(S1, A0);
     emitADDI(SP, SP, WORDSIZE*(int)(arg_list->size)); // remove argument and restore the sp
-  }
   /* YOUR CODE HERE */
 }
 
