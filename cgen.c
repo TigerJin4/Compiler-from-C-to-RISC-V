@@ -467,7 +467,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSUB(T0, SP, FP);
     emitSUB(SP, SP, T0);
 
-    emitADDI(FP, FP, 13*(WORDSIZE));
+    //emitADDI(FP, FP, 13*(WORDSIZE));
     emitLW(FP, 0*WORDSIZE, SP);
     emitLW(S1, 1*WORDSIZE, SP);
     emitLW(S2, 2*WORDSIZE, SP);
