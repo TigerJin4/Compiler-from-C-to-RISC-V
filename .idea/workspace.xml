@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cgen.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="516" column="44" selection-start-line="516" selection-start-column="44" selection-end-line="516" selection-end-column="44" />
+            <state relative-caret-position="181">
+              <caret line="444" column="19" lean-forward="true" selection-start-line="444" selection-start-column="19" selection-end-line="444" selection-end-column="19" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -194,12 +194,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551081895849</updated>
-      <workItem from="1551081899157" duration="26222000" />
+      <workItem from="1551081899157" duration="26595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26222000" />
+    <option name="totallyTimeSpent" value="26595000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -289,8 +289,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cgen.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="516" column="44" selection-start-line="516" selection-start-column="44" selection-end-line="516" selection-end-column="44" />
+        <state relative-caret-position="181">
+          <caret line="444" column="19" lean-forward="true" selection-start-line="444" selection-start-column="19" selection-end-line="444" selection-end-column="19" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
