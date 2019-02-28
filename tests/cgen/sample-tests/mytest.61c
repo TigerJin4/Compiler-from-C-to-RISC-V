@@ -1,0 +1,19 @@
+int main () {
+  PrintBool (!(true || true));
+  PrintBool (!(true || false));
+  PrintBool (!(false || true));
+  PrintBool (false || false);
+  PrintBool (!(1 || 2));
+  PrintBool (!(8 || 0));
+  PrintBool (!(0 || 8));
+  PrintBool (0 || 0);
+  PrintBool (!('c' || ' '));
+  PrintBool (!('d' || '\0'));
+  PrintBool (!('\0' || 'g'));
+  PrintBool ('\0' || '\0');
+  PrintBool (!(1 || NULL));
+  PrintBool (NULL || NULL);
+  PrintBool (!(NULL || 8));
+  PrintBool (!(true || NULL));
+  return 0;
+}
