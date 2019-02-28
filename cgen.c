@@ -253,14 +253,14 @@ void processExprBinaryLogicAnd(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
 
-//  emitSLTIU(T0, 0, T0);
-//  emitSLTIU(S1, 0, S1);
-//  emitAND(S1, T0, S1);
+  emitSNEZ(T0, T0);
+  emitSNEZ(S1, S1);
+  emitAND(S1, T0, S1);
 
-  emitMUL(S1, T0, S1);
-  emitSLT(T1, S1, x0);
-  emitSLT(T2, x0, S1);
-  emitMUL(S1, T1, T2);
+//  emitMUL(S1, T0, S1);
+//  emitSLT(T1, S1, x0);
+//  emitSLT(T2, x0, S1);
+//  emitMUL(S1, T1, T2);
 
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
@@ -276,13 +276,13 @@ void processExprBinaryLogicOr(DAST* dast,
   emitADD(T0, S1, x0);
   emitLW(S1, 0, SP);
 
-//  emitSLTIU(T0, 0, T0);
-//  emitSLTIU(S1, 0, S1);
-//  emitOR(S1, T0, S1);
-  emitADD(S1, T0, S1);
-  emitSLT(T1, S1, x0);
-  emitSLT(T2, x0, S1);
-  emitADD(S1, T1, T2);
+  emitSNEZ(T0, T0);
+  emitSNEZ(S1, S1);
+  emitOR(S1, T0, S1);
+//  emitADD(S1, T0, S1);
+//  emitSLT(T1, S1, x0);
+//  emitSLT(T2, x0, S1);
+//  emitADD(S1, T1, T2);
 
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
@@ -458,12 +458,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
     emitADDI(FP, FP, -13*(WORDSIZE));
 
-//    emitADDI(SP, SP, -1* (int)func_body->size * WORDSIZE);
-//    for (int i = 0; i < func_body->size; i++) {
-//      dispatch(func_body->children[i], startLabel, endLabel);
-//      emitSW(S1, (i+11)*WORDSIZE, SP);
-//    }
-
     dispatch(func_body, startLabel, endLabel);
 
 
@@ -523,8 +517,9 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
       emitSW(S1, ((int)arg_list->size - 1 - i) * WORDSIZE, SP);
     }
     emitJAL(RA, func_id->data.identifier); // calling the function
-
+    emitMV(S1, A0);
     emitADDI(SP, SP, WORDSIZE*(int)(arg_list->size)); // remove argument and restore the sp
+
   }
   /* YOUR CODE HERE */
 }
