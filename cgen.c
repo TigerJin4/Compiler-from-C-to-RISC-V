@@ -435,21 +435,39 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Set up stack and frame
     */
 
-    emitADDI(SP, SP, -13*(WORDSIZE));
-    emitSW(FP, 0*WORDSIZE, SP);
+//    emitADDI(SP, SP, -13*(WORDSIZE));
+//    emitSW(FP, 0*WORDSIZE, SP);
+//    emitMV(FP, SP);
+//    emitSW(S1, 1*WORDSIZE, SP);
+//    emitSW(S2, 2*WORDSIZE, SP);
+//    emitSW(S3, 3*WORDSIZE, SP);
+//    emitSW(S4, 4*WORDSIZE, SP);
+//    emitSW(S5, 5*WORDSIZE, SP);
+//    emitSW(S6, 6*WORDSIZE, SP);
+//    emitSW(S7, 7*WORDSIZE, SP);
+//    emitSW(S8, 8*WORDSIZE, SP);
+//    emitSW(S9, 9*WORDSIZE, SP);
+//    emitSW(S10, 10*WORDSIZE, SP);
+//    emitSW(S11, 11*WORDSIZE, SP);
+//    emitSW(RA, 12*WORDSIZE, SP);
+
+    emitADDI(SP, SP, -WORDSIZE);
+    emitSW(FP,0,SP);
     emitMV(FP, SP);
-    emitSW(S1, 1*WORDSIZE, SP);
-    emitSW(S2, 2*WORDSIZE, SP);
-    emitSW(S3, 3*WORDSIZE, SP);
-    emitSW(S4, 4*WORDSIZE, SP);
-    emitSW(S5, 5*WORDSIZE, SP);
-    emitSW(S6, 6*WORDSIZE, SP);
-    emitSW(S7, 7*WORDSIZE, SP);
-    emitSW(S8, 8*WORDSIZE, SP);
-    emitSW(S9, 9*WORDSIZE, SP);
-    emitSW(S10, 10*WORDSIZE, SP);
-    emitSW(S11, 11*WORDSIZE, SP);
-    emitSW(RA, 12*WORDSIZE, SP);
+    emitADDI(SP,SP, -12*WORDSIZE);
+
+    emitSW(S1, 0*WORDSIZE, SP);
+    emitSW(S2, 1*WORDSIZE, SP);
+    emitSW(S3, 2*WORDSIZE, SP);
+    emitSW(S4, 3*WORDSIZE, SP);
+    emitSW(S5, 4*WORDSIZE, SP);
+    emitSW(S6, 5*WORDSIZE, SP);
+    emitSW(S7, 6*WORDSIZE, SP);
+    emitSW(S8, 7*WORDSIZE, SP);
+    emitSW(S9, 8*WORDSIZE, SP);
+    emitSW(S10, 9*WORDSIZE, SP);
+    emitSW(S11, 10*WORDSIZE, SP);
+    emitSW(RA, 11*WORDSIZE, SP);
 
 
     //emitADDI(FP, FP, -13*(WORDSIZE));
