@@ -257,11 +257,6 @@ void processExprBinaryLogicAnd(DAST* dast,
   emitSNEZ(S1, S1);
   emitAND(S1, T0, S1);
 
-//  emitMUL(S1, T0, S1);
-//  emitSLT(T1, S1, x0);
-//  emitSLT(T2, x0, S1);
-//  emitMUL(S1, T1, T2);
-
   emitADDI(SP, SP, 4);
   /* YOUR CODE HERE */
 }
@@ -469,7 +464,8 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       - Epilogue
       - Restore stack and frame
     */
-    emitADDI(SP, x0, -13*(WORDSIZE));
+    emitSUB(T0, SP, FP);
+    emitSUB(SP, SP, T0);
 
     emitADDI(FP, FP, 13*(WORDSIZE));
     emitLW(FP, 0*WORDSIZE, SP);
