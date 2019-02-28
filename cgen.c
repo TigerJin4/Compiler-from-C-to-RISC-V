@@ -485,21 +485,23 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
     emitMV(SP, FP);
 
-    emitADDI(FP, FP, 13*(WORDSIZE));
+    //emitADDI(FP, FP, 13*(WORDSIZE));
     emitLW(FP, 0*WORDSIZE, SP);
-    emitLW(S1, 1*WORDSIZE, SP);
-    emitLW(S2, 2*WORDSIZE, SP);
-    emitLW(S3, 3*WORDSIZE, SP);
-    emitLW(S4, 4*WORDSIZE, SP);
-    emitLW(S5, 5*WORDSIZE, SP);
-    emitLW(S6, 6*WORDSIZE, SP);
-    emitLW(S7, 7*WORDSIZE, SP);
-    emitLW(S8, 8*WORDSIZE, SP);
-    emitLW(S9, 9*WORDSIZE, SP);
-    emitLW(S10, 10*WORDSIZE, SP);
-    emitLW(S11, 11*WORDSIZE, SP);
-    emitLW(RA, 12*WORDSIZE, SP);
-    emitADDI(SP, SP, 13*WORDSIZE);
+    emitADDI(SP, SP, WORDSIZE);
+
+    emitLW(S1, 0*WORDSIZE, SP);
+    emitLW(S2, 1*WORDSIZE, SP);
+    emitLW(S3, 2*WORDSIZE, SP);
+    emitLW(S4, 3*WORDSIZE, SP);
+    emitLW(S5, 4*WORDSIZE, SP);
+    emitLW(S6, 5*WORDSIZE, SP);
+    emitLW(S7, 6*WORDSIZE, SP);
+    emitLW(S8, 7*WORDSIZE, SP);
+    emitLW(S9, 8*WORDSIZE, SP);
+    emitLW(S10, 9*WORDSIZE, SP);
+    emitLW(S11, 10*WORDSIZE, SP);
+    emitLW(RA, 11*WORDSIZE, SP);
+    emitADDI(SP, SP, 12*WORDSIZE);
 
 
 //    emitLW(S1, -12*WORDSIZE, FP);
