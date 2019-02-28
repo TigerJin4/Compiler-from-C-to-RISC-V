@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cgen.c" beforeDir="false" afterPath="$PROJECT_DIR$/cgen.c" afterDir="false" />
-    </list>
+    <list default="true" id="b9911f8c-b00d-4f21-a29b-9fafa0e755d7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="726" />
     <option name="width" value="714" />
     <option name="height" value="900" />
@@ -194,12 +192,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551081895849</updated>
-      <workItem from="1551081899157" duration="23954000" />
+      <workItem from="1551081899157" duration="24150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23954000" />
+    <option name="totallyTimeSpent" value="24150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
