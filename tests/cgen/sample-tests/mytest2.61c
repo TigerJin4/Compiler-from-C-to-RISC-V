@@ -60,4 +60,5 @@ int fastFib(int n) {
   int i;
   *fib = 0;
   *(fib + 4) = 1;
+  return 0;
 }
