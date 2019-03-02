@@ -1,20 +1,62 @@
 #include "../../../cgen-lib/print.h"
 
-int g (int x) {
-  if (x == 0) {
-    return 0;
-  }
-  return 1 + g (x - 1);
-}
-
-int f () {
-  return g (7) + 9;
-}
-
 int main () {
-  PrintInt (3 - 2);
-  PrintInt (3 + 2);
-  int y = f ();
-  PrintInt (y);
+  int i = 5;
+  bool b = true;
+  char *str = "hi there";
+  PrintInt (i);
+  PrintBool (b);
+  PrintString (str);
+  PrintChar (*(str + 5));
+
+
+  PrintInt(recursion_test_1(1000 / 1000 * 1 + 10));
+  PrintInt(no_arg());
+  PrintChar(multiple_input(i, b, str));
+
+  int j;
+  for (j = 0; j <= 10; j++) {
+    // PrintInt(Fib(j));
+    PrintInt(fastFib(j));
+  }
+
   return 0;
 }
+
+int recursion_test_1(int x) {
+    if (x == 0) {
+      return 100;
+    } else {
+      return 10 + recursion_test_1(x - 1);
+    }
+}
+
+int no_arg() {
+    return 1;
+}
+
+char multiple_input(int x, bool y, char* z) {
+  int me = 1 * 2 ^ 3 | 4 & 999;
+  bool u = 10 && 0 && 8 || 2;
+  char* new_str = "what the fuck is goint on ? why cant we have a comprehensive autograder? god save me. ";
+  int t = x + x;
+  bool test = y && y;
+  return *z;
+}
+
+
+int Fib(int n) {
+  if (n == 0) {
+    return 0;
+  }
+  if (n == 1) {
+    return 1;
+  }
+  return Fib(n - 1) + Fib(n - 2);
+}
+
+int fastFib(int n) {
+  int* fib;
+  int i;
+  *fib = 0;
+  *(fib + 4) = 1;
